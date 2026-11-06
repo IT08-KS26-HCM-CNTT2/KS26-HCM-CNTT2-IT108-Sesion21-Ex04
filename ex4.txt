@@ -1,0 +1,44 @@
+
+1. BẢNG SO SÁNH: GOOGLE SEARCH VS. AI ASSISTANT
+[Tiêu chí: ĐỘ CHÍNH XÁC]
+- Google Search:  CAO (Nếu dùng nguồn chuẩn như StackOverflow, Docs). Được cộng 
+                  đồng kiểm duyệt (upvote). Tuy nhiên phải tự lọc thông tin.
+- AI Assistant:   KHÁ CAO với các lỗi phổ biến (như EADDRINUSE, Address already 
+                  in use). Giảm chính xác nếu gặp lỗi quá dị hoặc framework mới.
+[Tiêu chí: TÍNH CẬP NHẬT]
+- Google Search:  CỰC KỲ CAO. Cập nhật theo thời gian thực (Real-time). Tìm 
+                  được các bản vá lỗi vừa ra mắt.
+- AI Assistant:   PHỤ THUỘC vào dữ liệu huấn luyện hoặc tính năng web search. 
+                  Có thể bị trễ với các phiên bản OS/Library mới phát hành.
+[Tiêu chí: KHẢ NĂNG GIẢI THÍCH]
+- Google Search:  TRUNG BÌNH - KHÁ. Phụ thuộc vào cách trình bày của tác giả 
+                  bài viết. Đôi khi chỉ có code mà không giải thích nguyên nhân.
+- AI Assistant:   XUẤT SẮC. Giải thích rõ nguyên nhân gốc rễ (Root cause), 
+                  cho phép hỏi đáp đa chiều và tùy biến theo ngữ cảnh dự án.
+
+[Tiêu chí: RỦI RO (HALLUCINATION)]
+- Google Search:  THẤP. Nội dung do con người viết. Rủi ro chính là áp dụng 
+                  nhầm phiên bản cũ cho dự án mới.
+- AI Assistant:   CÓ RỦI RO. AI có thể bịa đặt tham số câu lệnh (command flags) 
+                  hoặc tên tiến trình không tồn tại.
+2. BẮT BUỘC DÙNG GOOGLE SEARCH TRONG TRƯỜNG HỢP NÀO ĐỂ BẢO ĐẢM AN TOÀN MÁY TÍNH?
+Google Search (kết hợp tra cứu Official Documentation / StackOverflow) bắt buộc 
+phải dùng trong 2 trường hợp sau để bảo đảm an toàn:
+1. KHI CẦN CHẠY CÁC LỆNH HỆ THỐNG QUYỀN CAO (ADMIN / ROOT)
+   - Lý do: Xử lý xung đột cổng thường yêu cầu dùng các lệnh như netstat, taskkill 
+     (Windows) hoặc lsof, kill -9 (Linux/Mac) để diệt tiến trình. 
+   - Rủi ro AI: AI có thể tưởng tượng (hallucinate) sai cờ câu lệnh (flags) hoặc 
+     gợi ý diệt nhầm PID (Process ID) của hệ điều hành.
+   - An toàn: Google Search đưa ta đến tài liệu chính thức (Microsoft Docs, Linux 
+     Man Pages) để xác minh chính xác cú pháp lệnh trước khi gỡ rối.
+2. KHI THÔNG TIN LỖI BỊ DÍNH DỮ LIỆU BẢO MẬT / NHẠY CẢM
+   - Lý do: Chuỗi lỗi hoặc file log có thể chứa API Key, mật khẩu Database, 
+     IP nội bộ, hoặc tên đường dẫn dự án của công ty.
+   - Rủi ro AI: Dán trực tiếp lên AI công cộng có thể vi phạm chính sách bảo mật 
+     dữ liệu (Data Privacy) của doanh nghiệp.
+   - An toàn: Dùng Google Search chỉ cần tra cứu từ khóa lỗi chung chung (ví dụ: 
+     "Error: listen EADDRINUSE :::3000") mà không cần tải dữ liệu nội bộ lên server 
+     bên thứ ba.
+LỜI KHUYÊN DÙNG PHÙ HỢP:
+- Dùng AI Assistant để giải thích lỗi và lấy hướng đi nhanh.
+- Dùng Google Search để kiểm tra lại cú pháp lệnh can thiệp hệ thống trước khi chạy.
